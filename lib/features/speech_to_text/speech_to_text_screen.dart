@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nogironlar_ilovasi/features/widgets/main_button.dart';
+import 'package:nogironlar_ilovasi/service/l10n/app_localizations.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
 
 class SpeechToTextScreen extends StatefulWidget {
   const SpeechToTextScreen({super.key});
@@ -57,6 +58,7 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
+    final lang = AppLocalizations.of(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -67,30 +69,27 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
               width: double.infinity,
               height: size.height * .6,
               child: ColoredBox(
-                color: Colors.cyan,
+                color: Colors.cyanAccent,
                 child: Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
                       Text(
                         _speechToText.isListening
-                            ? "Listening ..."
+                            ? lang.listening
                             : _speechEnabled
-                                ? "Tap the speak button to start listening"
-                                : "Speech is not available",
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+                                ? lang.tapToStartListening
+                                : lang.speechNotAvailable,
+                        style: const TextStyle(fontSize: 20),
                       ),
                       const SizedBox(height: 20),
                       Expanded(
                         child: SingleChildScrollView(
-                          child: Text(
-                            _wordsSpoken,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              _wordsSpoken,
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ),
                         ),
@@ -101,22 +100,13 @@ class _SpeechToTextScreenState extends State<SpeechToTextScreen> {
               ),
             ),
             const Spacer(),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    _speechToText.isListening ? Colors.cyanAccent : Colors.cyan,
-                foregroundColor: Colors.white,
-                fixedSize: const Size(200, 80),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
-              ),
+            MainButton(
+              lang.speak,
+              backgroundColor: _speechToText.isListening
+                  ? Colors.tealAccent
+                  : Colors.cyanAccent,
               onPressed:
                   _speechToText.isListening ? _stopListening : _startListening,
-              child: const Text(
-                "Speak",
-                style: TextStyle(fontSize: 22),
-              ),
             ),
             const Spacer(flex: 3),
           ],

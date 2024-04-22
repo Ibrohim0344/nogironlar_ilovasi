@@ -1,0 +1,19 @@
+{
+  "speak": "SPEAK",
+  "see": "SEE",
+  "hear": "HEAR",
+  "sos": "SOS",
+  "settings": "SETTINGS",
+  "language": "LANGUAGE",
+  "location": "LOCATION",
+  "aboutApp": "ABOUT APP",
+  "tapToStartListening": "Tap the speak button to start listening",
+  "speechNotAvailable": "Speech is not available",
+  "listening": "Listening ...",
+  "scanImage": "scan image",
+  "voice": "voice",
+  "share": "share",
+  "currentLocation": "get current location",
+  "lng": "longitude",
+  "lat": "latitude"
+}

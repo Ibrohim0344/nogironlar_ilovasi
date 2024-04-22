@@ -1,0 +1,19 @@
+{
+  "speak": "GAPIRISH",
+  "see": "KO'RISH",
+  "hear": "ESHITISH",
+  "sos": "TEZ-YORDAM",
+  "settings": "SOZLAMALAR",
+  "language": "TIL",
+  "location": "LOKATSIYA",
+  "aboutApp": "ILOVA HAQIDA",
+  "tapToStartListening": "Eshitishni boshlash uchun gapirish tugmasini bosing",
+  "speechNotAvailable": "Nutq mavjud emas",
+  "listening": "Tinglanyapti ...",
+  "scanImage": "rasmni skanerlash",
+  "voice": "ovoz",
+  "share": "ulashish",
+  "currentLocation": "joriy manzil",
+  "lng": "uzunlik",
+  "lat": "kenglik"
+}
