@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _PictureToTextState extends State<PictureToText> {
 
   Future<void> readTextFromImage() async {
     final inputImage = InputImage.fromFile(_image!);
-    final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
+    final textRecognizer = TextRecognizer();
     final RecognizedText recognizedText =
         await textRecognizer.processImage(inputImage);
 
@@ -48,6 +49,9 @@ class _PictureToTextState extends State<PictureToText> {
   }
 
   Future<void> playTextToSpeech(String text) async {
+    log("------------------------------------------------------------------");
+    log(textFromPicture);
+    log("------------------------------------------------------------------");
     String voiceRachel = '21m00Tcm4TlvDq8ikWAM';
 
     String url = 'https://api.elevenlabs.io/v1/text-to-speech/$voiceRachel';
@@ -60,7 +64,7 @@ class _PictureToTextState extends State<PictureToText> {
       },
       body: json.encode({
         "text": text,
-        "model_id": "eleven_monolingual_v1",
+        "model_id": "eleven_multilingual_v2",
         "voice_settings": {"stability": .15, "similarity_boost": .5}
       }),
     );
