@@ -24,7 +24,7 @@ class MainButton extends StatelessWidget {
         foregroundColor: Colors.black,
         fixedSize: width != null ? Size(width!, 80) : null,
         padding: EdgeInsets.symmetric(
-          horizontal: 8,
+          horizontal: 10,
           vertical: width == null ? vertPadding : 0,
         ),
         shape: const RoundedRectangleBorder(

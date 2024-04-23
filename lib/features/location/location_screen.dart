@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nogironlar_ilovasi/features/widgets/main_button.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../service/l10n/app_localizations.dart';
 
@@ -106,6 +107,10 @@ class _LocationScreenState extends State<LocationScreen> {
     });
   }
 
+  void shareLocation(double lat, double lng) {
+    Share.share('https://www.google.com/maps/search/?api=1&query=$lat,$lng');
+  }
+
   @override
   void initState() {
     _controller = Completer();
@@ -165,7 +170,10 @@ class _LocationScreenState extends State<LocationScreen> {
                   MainButton(
                     lang.share,
                     vertPadding: 20,
-                    onPressed: () {},
+                    onPressed: () => shareLocation(
+                      _currentPosition!.latitude,
+                      _currentPosition!.longitude,
+                    ),
                   ),
                   const Spacer(),
                 ],
